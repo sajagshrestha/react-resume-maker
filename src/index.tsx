@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 //for styled-components
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle, theme } from "./theme";
+import { GlobalStyle, theme } from "./Theme";
 //for redux
 import { createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";

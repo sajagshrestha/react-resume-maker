@@ -3,14 +3,14 @@ declare module "styled-components" {
 	export interface DefaultTheme {
 		background: string;
 		primaryText: string;
-		templateBackground: string;
+		previewBackground: string;
 	}
 }
 
 export const theme: DefaultTheme = {
 	background: "#fff",
 	primaryText: "#5C5C5C",
-	templateBackground: "#ECF4EF",
+	previewBackground: "#ECF4EF",
 };
 
 export const GlobalStyle = createGlobalStyle`

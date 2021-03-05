@@ -1,13 +1,12 @@
-import { useReduxSelector } from "../Reducers";
-
+import Dashboard from "../Components/Dashboard";
+import Preview from "../Components/Preview";
+import { CustomizeContainer } from "./Customize.styles";
 const Customize: React.FC = () => {
-	const templateType = useReduxSelector((state) => state.template.type);
 	return (
-		<>customize:{templateType}</>
-		// <CustomizeContainer>
-		// 	<Dasbboard />
-		// 	<Preview template =""  />
-		// </CustomizeContainer>
+		<CustomizeContainer>
+			<Dashboard />
+			<Preview />
+		</CustomizeContainer>
 	);
 };
 export default Customize;

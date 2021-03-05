@@ -10,11 +10,10 @@ declare module "styled-components" {
 export const theme: DefaultTheme = {
 	background: "#fff",
 	primaryText: "#5C5C5C",
-	previewBackground: "#ECF4EF",
+	previewBackground: "#F5F5F5",
 };
 
 export const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
 	*{
 		margin:0;
 		padding:0;

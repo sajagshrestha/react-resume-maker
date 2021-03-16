@@ -1,6 +1,14 @@
+import { useReduxSelector } from "../Reducers";
 import { MinimalContainer } from "./Minimal.styles";
 
 const Minimal: React.FC = () => {
-	return <MinimalContainer />;
+	const { firstName, lastName } = useReduxSelector(
+		(state) => state.personalInformation
+	);
+	return (
+		<MinimalContainer>
+			{firstName} {lastName}
+		</MinimalContainer>
+	);
 };
 export default Minimal;

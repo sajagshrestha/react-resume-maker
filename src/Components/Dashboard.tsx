@@ -1,5 +1,12 @@
-import { DashboardContainer } from "./Dashboard.styles";
+import { Content, DashboardContainer } from "./Dashboard.styles";
+import PIForm from "./DashboardForms/PIForm";
 const Dashboard: React.FC = () => {
-	return <DashboardContainer>dsahboard</DashboardContainer>;
+	return (
+		<DashboardContainer>
+			<Content>
+				<PIForm />
+			</Content>
+		</DashboardContainer>
+	);
 };
 export default Dashboard;

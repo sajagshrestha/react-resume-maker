@@ -4,6 +4,7 @@ declare module "styled-components" {
 		background: string;
 		primaryText: string;
 		previewBackground: string;
+		headerFont: string;
 	}
 }
 
@@ -11,6 +12,7 @@ export const theme: DefaultTheme = {
 	background: "#fff",
 	primaryText: "#5C5C5C",
 	previewBackground: "#F5F5F5",
+	headerFont: `'Poppins', sans-serif`,
 };
 
 export const GlobalStyle = createGlobalStyle`

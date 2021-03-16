@@ -1,16 +1,15 @@
-export interface TemplateTypeState {
+interface ITEMPLATE {
 	type: string;
 }
+const initialState: ITEMPLATE = {
+	type: "",
+};
 export type TemplateTypeAction = {
 	type: "CHANGE_TEMPLATE";
 	templateName: string;
 };
-
-const initialState: TemplateTypeState = {
-	type: "",
-};
 export const TemplateTypeReducer = (
-	state: TemplateTypeState = initialState,
+	state: ITEMPLATE = initialState,
 	action: TemplateTypeAction
 ) => {
 	switch (action.type) {

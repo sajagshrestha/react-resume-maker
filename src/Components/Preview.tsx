@@ -12,6 +12,9 @@ const Preview: React.FC = () => {
 				dragElastic={1}
 				dragConstraints={constraintsRef}
 				initial={false}
+				animate={{
+					scale: 0.7,
+				}}
 				// animate={{
 				// 	scale: scale,
 				// 	...(reset

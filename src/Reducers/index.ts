@@ -6,15 +6,17 @@ import {
 	PersonalInformationAction,
 	PersonalInformationReducer,
 } from "./PersonalInformationReducer";
+import { ModalReducer, ModalAction } from "./ModalReducer";
 //rootReducer
 export const rootReducer = combineReducers({
 	template: TemplateTypeReducer,
 	personalInformation: PersonalInformationReducer,
+	modal: ModalReducer,
 });
 export type RootState = ReturnType<typeof rootReducer>;
 //custom selector and dispatch
 export const useReduxSelector = createSelectorHook<RootState>();
 export const useReduxDispatch = createDispatchHook<
 	void,
-	TemplateTypeAction | PersonalInformationAction
+	TemplateTypeAction | PersonalInformationAction | ModalAction
 >();

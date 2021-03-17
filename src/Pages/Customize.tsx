@@ -1,5 +1,5 @@
-import Dashboard from "../Components/Dashboard";
-import Preview from "../Components/Preview";
+import Dashboard from "../Components/Dashboard/Dashboard";
+import Preview from "../Components/Preview/Preview";
 import { CustomizeContainer } from "./Customize.styles";
 const Customize: React.FC = () => {
 	return (

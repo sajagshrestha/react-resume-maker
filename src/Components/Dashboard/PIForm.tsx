@@ -1,7 +1,7 @@
 import { Grid, TextField } from "@material-ui/core";
 import { ChangeEvent } from "react";
 import { useReduxSelector, useReduxDispatch } from "../../Reducers";
-import { Header } from "../Dashboard.styles";
+import { Header } from "./Dashboard.styles";
 
 const PIForm = () => {
 	const {
@@ -23,9 +23,9 @@ const PIForm = () => {
 	};
 	return (
 		<form>
-			<Grid container spacing={3}>
+			<Grid container spacing={4}>
 				<Grid item xs={12}>
-					<Header>Personal Information</Header>
+					<Header>About Yourself</Header>
 				</Grid>
 
 				<Grid item xs={6}>

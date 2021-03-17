@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import Minimal from "../TemplatePreviews/Minimal";
+import Minimal from "../../TemplatePreviews/Minimal";
 import { DragableCotainer, PreviewContainer } from "./Preview.styles";
 const Preview: React.FC = () => {
 	//to limit the drag of resume

@@ -6,5 +6,5 @@ export const CustomizeContainer = styled.div`
 	width: 100vw;
 	background: ${(props) => theme.background};
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 0.8fr 1.2fr;
 `;

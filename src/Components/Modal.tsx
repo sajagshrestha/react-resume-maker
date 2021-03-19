@@ -18,7 +18,7 @@ const ModalContainer = styled.div`
 	background: ${(props) => props.theme.background};
 	width: auto;
 	height: auto;
-	padding: 2rem;
+	padding: 3.2rem;
 	box-shadow: 4px 10px 10px rgba(0, 0, 0, 0.11);
 `;
 const ModalControl = styled.div`

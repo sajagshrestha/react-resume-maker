@@ -13,21 +13,30 @@ const EducationForm = () => {
 	const dispatch = useReduxDispatch();
 	const { register, handleSubmit } = useForm();
 	const handleClose = () => dispatch({ type: "CLOSE_EDUCATION_MODAL" });
+	const handleDelete = (edu: IEDUCATION) =>
+		dispatch({ type: "DELETE_EDUCATION", payload: edu });
+	const handleEdit = (edu: IEDUCATION) =>
+		dispatch({ type: "EDIT_EDUCATION", payload: edu });
 	return (
 		<>
 			<Grid container spacing={3}>
 				<Grid item xs={12}>
 					<Header>Education</Header>
 				</Grid>
-				{education.map((edu: IEDUCATION) => (
-					<Grid item xs={12}>
+				{education.map((edu: IEDUCATION, index: number) => (
+					<Grid item xs={12} key={edu.degree}>
 						{edu.degree}
+						{index}
+						<button onClick={() => handleDelete(edu)}>
+							delete
+						</button>
+						<button onClick={() => handleEdit(edu)}>edit</button>
 					</Grid>
 				))}
 				<Grid item xs={12}>
 					<button
 						onClick={() =>
-							dispatch({ type:"OPEN_EDUCATION_MODAL"})
+							dispatch({ type: "OPEN_EDUCATION_MODAL" })
 						}>
 						add
 					</button>
@@ -39,7 +48,7 @@ const EducationForm = () => {
 					onSubmit={handleSubmit((data: IEDUCATION) =>
 						dispatch({ type: "ADD_EDUCATION", payload: data })
 					)}>
-					<Grid container spacing={3} justify="flex-end">
+					<Grid container spacing={5} justify="flex-end">
 						<Grid item xs={12}>
 							<Header>Add Education</Header>
 						</Grid>

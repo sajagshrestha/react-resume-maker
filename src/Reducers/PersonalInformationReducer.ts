@@ -29,6 +29,6 @@ export const PersonalInformationReducer: Reducer<
 			return initialState;
 		}
 		default:
-			return initialState;
+			return state;
 	}
 };

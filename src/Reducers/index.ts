@@ -7,16 +7,21 @@ import {
 	PersonalInformationReducer,
 } from "./PersonalInformationReducer";
 import { ModalReducer, ModalAction } from "./ModalReducer";
+import { EducationAction, EducationReducer } from "./EducationReducer";
 //rootReducer
 export const rootReducer = combineReducers({
 	template: TemplateTypeReducer,
 	personalInformation: PersonalInformationReducer,
 	modal: ModalReducer,
+	education: EducationReducer,
 });
 export type RootState = ReturnType<typeof rootReducer>;
 //custom selector and dispatch
 export const useReduxSelector = createSelectorHook<RootState>();
 export const useReduxDispatch = createDispatchHook<
 	void,
-	TemplateTypeAction | PersonalInformationAction | ModalAction
+	| TemplateTypeAction
+	| PersonalInformationAction
+	| ModalAction
+	| EducationAction
 >();

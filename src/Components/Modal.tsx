@@ -56,7 +56,8 @@ const Modal: React.FC<Props> = ({ children, open, close }) => {
 					onClick={closeModalOnOutsideClick}
 					variants={variants}
 					initial="closed"
-					animate="open">
+					animate="open"
+					transition={{ duration: 0.2 }}>
 					<ModalContainer>
 						{children}
 						<ModalControl></ModalControl>

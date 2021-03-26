@@ -1,6 +1,6 @@
 import { Grid } from "@material-ui/core";
 import { Content, DashboardContainer } from "./Dashboard.styles";
-import EducationForm from "./EducationForm";
+import Education from "./Education";
 import PIForm from "./PIForm";
 const Dashboard: React.FC = () => {
 	return (
@@ -11,7 +11,7 @@ const Dashboard: React.FC = () => {
 						<PIForm />
 					</Grid>
 					<Grid item xs={12}>
-						<EducationForm />
+						<Education />
 					</Grid>
 				</Grid>
 			</Content>

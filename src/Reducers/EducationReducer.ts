@@ -9,7 +9,7 @@ const initialState: IEDUCATION[] = [];
 export type EducationAction =
 	| { type: "ADD_EDUCATION"; payload: IEDUCATION }
 	| { type: "DELETE_EDUCATION"; payload: IEDUCATION }
-	| { type: "EDIT_EDUCATION"; payload: IEDUCATION }
+	| { type: "EDIT_EDUCATION"; payload: IEDUCATION; index: number | undefined }
 	| { type: "RESET" };
 
 export const EducationReducer: Reducer = (
@@ -26,11 +26,15 @@ export const EducationReducer: Reducer = (
 			});
 		}
 		case "EDIT_EDUCATION": {
-			return state.forEach((edu: IEDUCATION) => {
-				if (edu === action.payload) {
+			const newState = state.map((edu: IEDUCATION, index: number) => {
+				if (index === action.index) {
+					console.log(action.payload);
 					return action.payload;
 				}
+				return edu;
 			});
+
+			return newState;
 		}
 		case "RESET": {
 			return initialState;

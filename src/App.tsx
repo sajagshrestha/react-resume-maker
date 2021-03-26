@@ -2,11 +2,11 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Pages/Home";
 import Customize from "./Pages/Customize";
 import Dev from "./Pages/Dev";
-import Download from "./Components/Download";
+// import Download from "./Components/Download";
 const App: React.FC = () => {
 	return (
 		<BrowserRouter>
-			<Download />
+			{/* <Download /> */}
 			<Switch>
 				<Route exact path="/">
 					<Home />

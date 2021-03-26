@@ -1,6 +1,7 @@
 import React, { ReactChild, useRef } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import ReactDOM from "react-dom";
 //styles
 const ModalBackdrop = styled(motion.div)`
 	position: fixed;
@@ -48,7 +49,7 @@ const Modal: React.FC<Props> = ({ children, open, close }) => {
 			close();
 		}
 	};
-	return (
+	return ReactDOM.createPortal(
 		<>
 			{open ? (
 				<ModalBackdrop
@@ -64,7 +65,8 @@ const Modal: React.FC<Props> = ({ children, open, close }) => {
 					</ModalContainer>
 				</ModalBackdrop>
 			) : null}
-		</>
+		</>,
+		document.getElementById("portal")!
 	);
 };
 

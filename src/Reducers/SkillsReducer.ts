@@ -1,12 +1,15 @@
 import { Reducer } from "redux";
+export interface ISKILL {
+	id?: string;
+	skill: string;
+}
+const initialState: ISKILL[] = [];
 
-const initialState: string[] = [];
+export type SkillsAction =
+	| { type: "ADD_SKILL"; payload: ISKILL }
+	| { type: "DELETE_SKILL"; payload: ISKILL };
 
-type SkillsAction =
-	| { type: "ADD_SKILL"; payload: string }
-	| { type: "REMOVE_SKILL"; index: number };
-
-export const SkillReducer: Reducer<string[], SkillsAction> = (
+export const SkillReducer: Reducer<ISKILL[], SkillsAction> = (
 	state = initialState,
 	action
 ) => {
@@ -14,8 +17,11 @@ export const SkillReducer: Reducer<string[], SkillsAction> = (
 		case "ADD_SKILL": {
 			return [...state, action.payload];
 		}
-		case "REMOVE_SKILL": {
-			return state;
+		case "DELETE_SKILL": {
+			const newState = state.filter((skill: ISKILL) => {
+				return skill.id !== action.payload.id;
+			});
+			return newState;
 		}
 		default:
 			return state;

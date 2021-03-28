@@ -1,5 +1,6 @@
 import { Reducer } from "redux";
 export interface IEDUCATION {
+	id?: string;
 	instituteName: string;
 	degree: string;
 	startDate: string;
@@ -9,12 +10,12 @@ const initialState: IEDUCATION[] = [];
 export type EducationAction =
 	| { type: "ADD_EDUCATION"; payload: IEDUCATION }
 	| { type: "DELETE_EDUCATION"; payload: IEDUCATION }
-	| { type: "EDIT_EDUCATION"; payload: IEDUCATION; index: number | undefined }
+	| { type: "EDIT_EDUCATION"; payload: IEDUCATION }
 	| { type: "RESET" };
 
-export const EducationReducer: Reducer = (
-	state: IEDUCATION[] = initialState,
-	action: EducationAction
+export const EducationReducer: Reducer<IEDUCATION[], EducationAction> = (
+	state = initialState,
+	action
 ) => {
 	switch (action.type) {
 		case "ADD_EDUCATION": {
@@ -26,8 +27,8 @@ export const EducationReducer: Reducer = (
 			});
 		}
 		case "EDIT_EDUCATION": {
-			const newState = state.map((edu: IEDUCATION, index: number) => {
-				if (index === action.index) {
+			const newState = state.map((edu: IEDUCATION) => {
+				if (edu.id === action.payload.id) {
 					console.log(action.payload);
 					return action.payload;
 				}

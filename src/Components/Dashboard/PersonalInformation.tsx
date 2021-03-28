@@ -3,7 +3,7 @@ import { ChangeEvent } from "react";
 import { useReduxSelector, useReduxDispatch } from "../../Reducers";
 import { Header } from "./Dashboard.styles";
 
-const PIForm = () => {
+const PersonalInformation = () => {
 	const {
 		firstName,
 		lastName,
@@ -36,7 +36,7 @@ const PIForm = () => {
 						label="First Name"
 						value={firstName}
 						onChange={handleChange}
-						placeholder="Jon"
+						placeholder="John"
 					/>
 				</Grid>
 				<Grid item xs={6}>
@@ -102,4 +102,4 @@ const PIForm = () => {
 	);
 };
 
-export default PIForm;
+export default PersonalInformation;

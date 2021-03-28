@@ -1,5 +1,5 @@
 import { useReduxSelector } from "../Reducers";
-import { MinimalContainer } from "./Minimal.styles";
+import { MinimalContainer, PersonalInfoContainer } from "./Minimal.styles";
 
 const Minimal: React.FC = () => {
 	const {
@@ -10,9 +10,24 @@ const Minimal: React.FC = () => {
 		phone,
 		summary,
 	} = useReduxSelector((state) => state.personalInformation);
+	const { education } = useReduxSelector((state) => state);
 	return (
 		<MinimalContainer>
-			{firstName} {lastName} {email} {github} {phone} {summary}
+			<PersonalInfoContainer>
+				<h1 className="name">
+					{firstName} {lastName}
+				</h1>
+			</PersonalInfoContainer>
+			{email} {github} {phone} {summary}
+			<div>
+				{education.map((edu) => (
+					<div key={edu.id}>
+						{edu.instituteName}
+						{edu.degree}
+						{edu.startDate} - {edu.endDate}
+					</div>
+				))}
+			</div>
 		</MinimalContainer>
 	);
 };

@@ -8,7 +8,6 @@ const Education = () => {
 	const [edit, setEdit] = useState<{
 		editMode: boolean;
 		editValues?: IEDUCATION;
-		index?: number;
 	}>({
 		editMode: false,
 	});
@@ -18,13 +17,13 @@ const Education = () => {
 		setEdit({ editMode: false });
 		dispatch({ type: "OPEN_EDUCATION_MODAL" });
 	};
-	const handleDelete = (edu: IEDUCATION) =>
+	const handleDelete = (edu: IEDUCATION) => {
 		dispatch({ type: "DELETE_EDUCATION", payload: edu });
-	const handleEdit = (edu: IEDUCATION, index: number) => {
+	};
+	const handleEdit = (edu: IEDUCATION) => {
 		setEdit({
 			editMode: true,
 			editValues: edu,
-			index: index,
 		});
 		dispatch({ type: "OPEN_EDUCATION_MODAL" });
 	};
@@ -35,15 +34,14 @@ const Education = () => {
 				<Grid item xs={12}>
 					<Header>Education</Header>
 				</Grid>
-				{education.map((edu: IEDUCATION, index: number) => (
-					<Grid item xs={12} key={edu.degree}>
+				{education.map((edu: IEDUCATION) => (
+					<Grid item xs={12} key={edu.id}>
 						{edu.degree}
+						{edu.id}
 						<button onClick={() => handleDelete(edu)}>
 							delete
 						</button>
-						<button onClick={() => handleEdit(edu, index)}>
-							edit
-						</button>
+						<button onClick={() => handleEdit(edu)}>edit</button>
 					</Grid>
 				))}
 				<Grid item xs={12}>
@@ -51,10 +49,7 @@ const Education = () => {
 				</Grid>
 			</Grid>
 			{edit.editMode ? (
-				<EducationFormModal
-					editValues={edit.editValues}
-					index={edit.index}
-				/>
+				<EducationFormModal editValues={edit.editValues} />
 			) : (
 				<EducationFormModal />
 			)}

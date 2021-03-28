@@ -1,14 +1,14 @@
 import { Button, Grid, TextField } from "@material-ui/core";
+import { nanoid } from "nanoid";
 import { useForm } from "react-hook-form";
 import Modal from "./Modal";
 import { useReduxDispatch, useReduxSelector } from "../../Reducers";
 import { Form, FormTitle } from "./Modal.styles";
 import { IEDUCATION } from "../../Reducers/EducationReducer";
-
+import { memo } from "react";
 const EducationFormModal: React.FC<{
 	editValues?: IEDUCATION;
-	index?: number;
-}> = ({ editValues, index }) => {
+}> = memo(({ editValues }) => {
 	const defaultValues: IEDUCATION = editValues
 		? editValues
 		: {
@@ -21,10 +21,18 @@ const EducationFormModal: React.FC<{
 	const { register, handleSubmit } = useForm<IEDUCATION>();
 	const dispatch = useReduxDispatch();
 	const handleClose = () => dispatch({ type: "CLOSE_EDUCATION_MODAL" });
-	const onAdd = (data: IEDUCATION) =>
-		dispatch({ type: "ADD_EDUCATION", payload: data });
-	const onSave = (data: IEDUCATION) =>
-		dispatch({ type: "EDIT_EDUCATION", payload: data, index: index });
+	const onAdd = (data: IEDUCATION) => {
+		let id = nanoid();
+		let dataWithID = { ...data, id: id };
+		dispatch({ type: "ADD_EDUCATION", payload: dataWithID });
+	};
+
+	const onSave = (data: IEDUCATION) => {
+		let id = editValues?.id;
+		let dataWithID = { ...data, id: id };
+		dispatch({ type: "EDIT_EDUCATION", payload: dataWithID });
+	};
+
 	return (
 		<Modal open={openEducationModal} close={handleClose}>
 			<Form onSubmit={handleSubmit(editValues ? onSave : onAdd)}>
@@ -93,5 +101,5 @@ const EducationFormModal: React.FC<{
 			</Form>
 		</Modal>
 	);
-};
+});
 export default EducationFormModal;

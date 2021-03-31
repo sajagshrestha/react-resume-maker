@@ -12,10 +12,10 @@ const Dashboard: React.FC = () => {
 						<PersonalInformation />
 					</Grid>
 					<Grid item xs={12}>
-						<Education />
+						<Skills />
 					</Grid>
 					<Grid item xs={12}>
-						<Skills />
+						<Education />
 					</Grid>
 				</Grid>
 			</Content>

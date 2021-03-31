@@ -9,6 +9,7 @@ import {
 import { ModalReducer, ModalAction } from "./ModalReducer";
 import { EducationAction, EducationReducer } from "./EducationReducer";
 import { SkillReducer, SkillsAction } from "./SkillsReducer";
+import { ProjectActions, ProjectReducer } from "./ProjectReducer";
 //rootReducer
 export const rootReducer = combineReducers({
 	template: TemplateTypeReducer,
@@ -16,6 +17,7 @@ export const rootReducer = combineReducers({
 	modal: ModalReducer,
 	education: EducationReducer,
 	skills: SkillReducer,
+	projects: ProjectReducer,
 });
 export type RootState = ReturnType<typeof rootReducer>;
 //custom selector and dispatch
@@ -27,4 +29,5 @@ export const useReduxDispatch = createDispatchHook<
 	| ModalAction
 	| EducationAction
 	| SkillsAction
+	| ProjectActions
 >();

@@ -1,6 +1,7 @@
 import { useReduxDispatch, useReduxSelector } from "../../Reducers";
 import { Header } from "./Dashboard.styles";
 import { Grid } from "@material-ui/core";
+import AddButton from "../shared/AddButton";
 import { IEDUCATION } from "../../Reducers/EducationReducer";
 import EducationFormModal from "../Modals/EducationFormModal";
 import { useState } from "react";
@@ -13,7 +14,7 @@ const Education = () => {
 	});
 	const { education } = useReduxSelector((state) => state);
 	const dispatch = useReduxDispatch();
-	const handleADD = () => {
+	const handleAdd = () => {
 		setEdit({ editMode: false });
 		dispatch({ type: "OPEN_EDUCATION_MODAL" });
 	};
@@ -44,8 +45,8 @@ const Education = () => {
 						<button onClick={() => handleEdit(edu)}>edit</button>
 					</Grid>
 				))}
-				<Grid item xs={12}>
-					<button onClick={handleADD}>add</button>
+				<Grid item xs={4}>
+					<AddButton onClick={handleAdd} />
 				</Grid>
 			</Grid>
 			{edit.editMode ? (

@@ -1,4 +1,5 @@
 import { Grid, TextField, Button } from "@material-ui/core";
+import AddButton from "../shared/AddButton";
 import ClearIcon from "@material-ui/icons/Clear";
 import { Header } from "./Dashboard.styles";
 import { ChangeEvent, FormEvent, useState } from "react";
@@ -55,12 +56,7 @@ const Skills = () => {
 							/>
 						</Grid>
 						<Grid item xs={4}>
-							<Button
-								color="primary"
-								variant="contained"
-								type="submit">
-								Add
-							</Button>
+							<AddButton type="submit" />
 						</Grid>
 					</Grid>
 				</form>
@@ -69,6 +65,7 @@ const Skills = () => {
 			<Grid item xs={12}>
 				{skills.map((skill) => (
 					<SkillButton
+						key={skill.id}
 						onClick={() => handleDelete(skill)}
 						size="small"
 						variant="outlined"

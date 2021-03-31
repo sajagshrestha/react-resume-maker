@@ -12,11 +12,16 @@ export const DownloadContainer = styled.div`
 `;
 
 const Download = () => {
-	const { personalInformation } = useReduxSelector((state) => state);
+	const { personalInformation, skills } = useReduxSelector((state) => state);
 	return (
 		<DownloadContainer>
 			<PDFDownloadLink
-				document={<MinimalPDF data={personalInformation} />}>
+				document={
+					<MinimalPDF
+						personalInfo={personalInformation}
+						skills={skills}
+					/>
+				}>
 				Download
 			</PDFDownloadLink>
 		</DownloadContainer>

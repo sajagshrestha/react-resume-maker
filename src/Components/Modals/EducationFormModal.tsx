@@ -5,10 +5,10 @@ import Modal from "./Modal";
 import { useReduxDispatch, useReduxSelector } from "../../Reducers";
 import { Form, FormTitle } from "./Modal.styles";
 import { IEDUCATION } from "../../Reducers/EducationReducer";
-import { memo } from "react";
+
 const EducationFormModal: React.FC<{
 	editValues?: IEDUCATION;
-}> = memo(({ editValues }) => {
+}> = ({ editValues }) => {
 	const defaultValues: IEDUCATION = editValues
 		? editValues
 		: {
@@ -101,5 +101,5 @@ const EducationFormModal: React.FC<{
 			</Form>
 		</Modal>
 	);
-});
+};
 export default EducationFormModal;

@@ -1,6 +1,7 @@
 import { Grid } from "@material-ui/core";
 import { Content, DashboardContainer } from "./Dashboard.styles";
 import Education from "./Education";
+import Project from "./Project";
 import PersonalInformation from "./PersonalInformation";
 import Skills from "./Skills";
 const Dashboard: React.FC = () => {
@@ -13,6 +14,9 @@ const Dashboard: React.FC = () => {
 					</Grid>
 					<Grid item xs={12}>
 						<Skills />
+					</Grid>
+					<Grid item xs={12}>
+						<Project />
 					</Grid>
 					<Grid item xs={12}>
 						<Education />

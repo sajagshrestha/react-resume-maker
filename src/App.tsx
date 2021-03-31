@@ -6,7 +6,6 @@ import Download from "./Components/Download";
 const App: React.FC = () => {
 	return (
 		<BrowserRouter>
-			<Download />
 			<Switch>
 				<Route exact path="/">
 					<Home />

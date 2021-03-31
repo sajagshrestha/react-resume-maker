@@ -1,6 +1,6 @@
 import { useReduxDispatch, useReduxSelector } from "../../Reducers";
 import { Header } from "./Dashboard.styles";
-import { Grid } from "@material-ui/core";
+import { Grid, List, ListItem, ListItemText } from "@material-ui/core";
 import AddButton from "../shared/AddButton";
 import { IEDUCATION } from "../../Reducers/EducationReducer";
 import EducationFormModal from "../Modals/EducationFormModal";
@@ -35,16 +35,24 @@ const Education = () => {
 				<Grid item xs={12}>
 					<Header>Education</Header>
 				</Grid>
-				{education.map((edu: IEDUCATION) => (
-					<Grid item xs={12} key={edu.id}>
-						{edu.degree}
-						{edu.id}
-						<button onClick={() => handleDelete(edu)}>
-							delete
-						</button>
-						<button onClick={() => handleEdit(edu)}>edit</button>
-					</Grid>
-				))}
+				<Grid item xs={12}>
+					<List>
+						{education.map((edu: IEDUCATION) => (
+							<Grid item xs={12} key={edu.id}>
+								<ListItem>
+									<ListItemText primary={edu.degree} />
+								</ListItem>
+								<button onClick={() => handleDelete(edu)}>
+									delete
+								</button>
+								<button onClick={() => handleEdit(edu)}>
+									edit
+								</button>
+							</Grid>
+						))}
+					</List>
+				</Grid>
+
 				<Grid item xs={4}>
 					<AddButton onClick={handleAdd} />
 				</Grid>

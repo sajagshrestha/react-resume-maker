@@ -1,7 +1,8 @@
 import { useReduxDispatch, useReduxSelector } from "../../Reducers";
-import { Header } from "./Dashboard.styles";
-import { Grid, List, ListItem, ListItemText } from "@material-ui/core";
+import { Header, List } from "./Dashboard.styles";
+import { Grid } from "@material-ui/core";
 import AddButton from "../shared/AddButton";
+import DeleteIconButton from "../shared/DeleteIconButton";
 import { IEDUCATION } from "../../Reducers/EducationReducer";
 import EducationFormModal from "../Modals/EducationFormModal";
 import { useState } from "react";
@@ -31,27 +32,28 @@ const Education = () => {
 
 	return (
 		<>
-			<Grid container spacing={3}>
+			<Grid container spacing={2}>
 				<Grid item xs={12}>
 					<Header>Education</Header>
 				</Grid>
-				<Grid item xs={12}>
-					<List>
-						{education.map((edu: IEDUCATION) => (
-							<Grid item xs={12} key={edu.id}>
-								<ListItem>
-									<ListItemText primary={edu.degree} />
-								</ListItem>
-								<button onClick={() => handleDelete(edu)}>
-									delete
-								</button>
-								<button onClick={() => handleEdit(edu)}>
-									edit
-								</button>
-							</Grid>
-						))}
-					</List>
-				</Grid>
+				{education.length !== 0 && (
+					<Grid item xs={12}>
+						<List>
+							{education.map((edu: IEDUCATION) => (
+								<div className="items">
+									<h3>{edu.degree}</h3>
+									<DeleteIconButton
+										onClick={() =>
+											handleDelete(edu)
+										}></DeleteIconButton>
+									<button onClick={() => handleEdit(edu)}>
+										edit
+									</button>
+								</div>
+							))}
+						</List>
+					</Grid>
+				)}
 
 				<Grid item xs={4}>
 					<AddButton onClick={handleAdd} />

@@ -18,7 +18,7 @@ const App: React.FC = () => {
 				</Route>
 				<Route path="*">404 page not found</Route>
 			</Switch>
-			{/* <Dev /> */}
+			<Dev />
 		</BrowserRouter>
 	);
 };

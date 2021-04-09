@@ -82,7 +82,7 @@ const MinimalPDF: React.FC<Props> = ({ personalInfo, skills }) => {
 					<Text style={styles.summary}>{personalInfo.summary}</Text>
 				</View>
 				<View style={styles.section}>
-					<Text style={styles.title}>Skills</Text>
+					<Text style={styles.title}>SKILLS</Text>
 					<View style={styles.skills}>
 						{skills.map((skill) => (
 							<Text key={skill.id} style={styles.skill}>
@@ -133,12 +133,16 @@ const styles = StyleSheet.create({
 	},
 	skills: {
 		flexDirection: "row",
+		flexWrap: "wrap",
+
+		width: "90%",
+		margin: "auto",
 	},
 	skill: {
 		color: "#484848",
-		fontSize: 10,
+		fontSize: 11,
 		fontFamily: "Open Sans",
-		margin: "0 10",
+		margin: "1 14 0 0",
 	},
 	summary: {
 		color: "#484848",

@@ -29,7 +29,6 @@ export const EducationReducer: Reducer<IEDUCATION[], EducationAction> = (
 		case "EDIT_EDUCATION": {
 			const newState = state.map((edu: IEDUCATION) => {
 				if (edu.id === action.payload.id) {
-					console.log(action.payload);
 					return action.payload;
 				}
 				return edu;

@@ -9,30 +9,36 @@ import {
 	Image,
 } from "@react-pdf/renderer";
 import { PERSONALDATA } from "../Reducers/PersonalInformationReducer";
+import { ISKILL } from "../Reducers/SkillsReducer";
 interface Props {
-	data: PERSONALDATA;
+	personalInfo: PERSONALDATA;
+	skills: ISKILL[];
 }
-const MinimalPDF: React.FC<Props> = ({ data }) => {
+const MinimalPDF: React.FC<Props> = ({ personalInfo, skills }) => {
 	return (
 		<Document>
 			<Page style={styles.page}>
 				<View style={styles.personalInfoContainer}>
 					<View style={styles.PIWrapper}>
 						<View style={styles.nameContainer}>
-							<Text style={styles.name}>{data.firstName}</Text>
-							<Text style={styles.name}>{data.lastName}</Text>
+							<Text style={styles.name}>
+								{personalInfo.firstName}
+							</Text>
+							<Text style={styles.name}>
+								{personalInfo.lastName}
+							</Text>
 						</View>
 						<View style={styles.linkContainer}>
-							{data.email === "" ? (
+							{personalInfo.email === "" ? (
 								<Text></Text>
 							) : (
 								<View style={styles.links}>
 									<Link
 										style={styles.link}
-										src={`mailto:${data.email}`}>
-										{data.email}
+										src={`mailto:${personalInfo.email}`}>
+										{personalInfo.email}
 									</Link>
-									<Link src={`mailto:${data.email}`}>
+									<Link src={`mailto:${personalInfo.email}`}>
 										<Image
 											style={styles.img}
 											src="/mail.png"
@@ -40,14 +46,16 @@ const MinimalPDF: React.FC<Props> = ({ data }) => {
 									</Link>
 								</View>
 							)}
-							{data.github === "" ? (
+							{personalInfo.github === "" ? (
 								<Text></Text>
 							) : (
 								<View style={styles.links}>
-									<Link style={styles.link} src={data.github}>
-										{data.github}
+									<Link
+										style={styles.link}
+										src={personalInfo.github}>
+										{personalInfo.github}
 									</Link>
-									<Link src={data.github}>
+									<Link src={personalInfo.github}>
 										<Image
 											style={styles.img}
 											src="/github.png"
@@ -56,12 +64,12 @@ const MinimalPDF: React.FC<Props> = ({ data }) => {
 								</View>
 							)}
 
-							{data.phone === "" ? (
+							{personalInfo.phone === "" ? (
 								<Text></Text>
 							) : (
 								<View style={styles.links}>
 									<Text style={styles.link}>
-										{data.phone}
+										{personalInfo.phone}
 									</Text>
 									<Image
 										style={styles.img}
@@ -71,11 +79,19 @@ const MinimalPDF: React.FC<Props> = ({ data }) => {
 							)}
 						</View>
 					</View>
+					<Text style={styles.summary}>{personalInfo.summary}</Text>
 				</View>
-				<View style={styles.body}>
-					<View>
-						<Text style={styles.title}>ABOUT ME</Text>
-						<Text style={styles.content}>{data.summary}</Text>
+				<View style={styles.section}>
+					<Text style={styles.title}>SKILLS</Text>
+					<View style={styles.skills}>
+						{skills.map((skill) => (
+							<View style={styles.skill}>
+								<Image src="/dot.png" style={styles.dot} />
+								<Text key={skill.id} style={styles.skillTitle}>
+									{skill.skill}
+								</Text>
+							</View>
+						))}
 					</View>
 				</View>
 			</Page>
@@ -104,9 +120,16 @@ Font.register({
 	src: "https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-U1Ug.ttf",
 });
 const styles = StyleSheet.create({
-	body: {
-		padding: "4% 10%",
+	dot: {
+		height: "4px",
+		width: "4px",
+		marginRight: "3px",
 	},
+	section: {
+		margin: "2% 0",
+		padding: "2% 0",
+	},
+
 	title: {
 		fontFamily: "Archivo",
 		marginBottom: "1%",
@@ -116,14 +139,38 @@ const styles = StyleSheet.create({
 		fontSize: 11,
 		fontFamily: "Open Sans",
 	},
+	skills: {
+		flexDirection: "row",
+		flexWrap: "wrap",
+
+		width: "90%",
+		margin: "auto",
+	},
+	skill: {
+		display: "flex",
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	skillTitle: {
+		color: "#484848",
+		fontSize: 11,
+		fontFamily: "Open Sans",
+		margin: "1 14 0 0",
+	},
+	summary: {
+		color: "#484848",
+		fontSize: 11,
+		fontFamily: "Open Sans",
+		margin: "10 0",
+	},
 	img: {
-		height: "14x",
+		height: "14px",
 		width: "14px",
 	},
 
 	page: {
-		padding: 0,
-		margin: 0,
+		padding: "0 10%",
 	},
 	linkContainer: {
 		width: "auto",
@@ -152,15 +199,15 @@ const styles = StyleSheet.create({
 		fontFamily: "Archivo",
 	},
 	personalInfoContainer: {
-		padding: "0 10%",
-		height: "20%",
-		backgroundColor: "#F2F2F2",
-		alignItems: "center",
+		paddingTop: "10%",
+		flexDirection: "column",
 		justifyContent: "center",
+		borderBottom: "1",
+		borderBottomColor: "#484848",
 	},
 	PIWrapper: {
 		width: "100%",
-		height: "80%",
+
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "space-between",

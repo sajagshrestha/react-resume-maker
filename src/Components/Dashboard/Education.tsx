@@ -3,6 +3,7 @@ import { Header, List } from "./Dashboard.styles";
 import { Grid } from "@material-ui/core";
 import AddButton from "../shared/AddButton";
 import DeleteIconButton from "../shared/DeleteIconButton";
+import EditIconButton from "../shared/EditIconButton";
 import { IEDUCATION } from "../../Reducers/EducationReducer";
 import EducationFormModal from "../Modals/EducationFormModal";
 import { useState } from "react";
@@ -43,12 +44,12 @@ const Education = () => {
 								<div className="items">
 									<h3>{edu.degree}</h3>
 									<DeleteIconButton
-										onClick={() =>
+										click={() =>
 											handleDelete(edu)
 										}></DeleteIconButton>
-									<button onClick={() => handleEdit(edu)}>
-										edit
-									</button>
+									<EditIconButton
+										click={() => handleEdit(edu)}
+									/>
 								</div>
 							))}
 						</List>

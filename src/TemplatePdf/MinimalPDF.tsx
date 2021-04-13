@@ -85,9 +85,12 @@ const MinimalPDF: React.FC<Props> = ({ personalInfo, skills }) => {
 					<Text style={styles.title}>SKILLS</Text>
 					<View style={styles.skills}>
 						{skills.map((skill) => (
-							<Text key={skill.id} style={styles.skill}>
-								{skill.skill}
-							</Text>
+							<View style={styles.skill}>
+								<Image src="/dot.png" style={styles.dot} />
+								<Text key={skill.id} style={styles.skillTitle}>
+									{skill.skill}
+								</Text>
+							</View>
 						))}
 					</View>
 				</View>
@@ -117,6 +120,11 @@ Font.register({
 	src: "https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-U1Ug.ttf",
 });
 const styles = StyleSheet.create({
+	dot: {
+		height: "4px",
+		width: "4px",
+		marginRight: "3px",
+	},
 	section: {
 		margin: "2% 0",
 		padding: "2% 0",
@@ -139,6 +147,12 @@ const styles = StyleSheet.create({
 		margin: "auto",
 	},
 	skill: {
+		display: "flex",
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	skillTitle: {
 		color: "#484848",
 		fontSize: 11,
 		fontFamily: "Open Sans",

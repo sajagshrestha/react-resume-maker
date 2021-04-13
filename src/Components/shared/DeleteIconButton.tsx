@@ -1,10 +1,10 @@
 import { IconButton } from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 
-const DeleteIconButton: React.FC<{ onClick: () => void }> = ({ onClick }) => {
+const DeleteIconButton: React.FC<{ click: () => void }> = ({ click }) => {
 	return (
-		<IconButton color="secondary" onClick={onClick}>
-			<DeleteIcon />
+		<IconButton onClick={click}>
+			<DeleteOutlineIcon />
 		</IconButton>
 	);
 };

@@ -1,10 +1,12 @@
 import { useReduxDispatch, useReduxSelector } from "../../Reducers";
-import { Header } from "./Dashboard.styles";
+import { Header, List } from "./Dashboard.styles";
 import { Grid } from "@material-ui/core";
 import AddButton from "../shared/AddButton";
 import ProjectFormModal from "../Modals/ProjectFormModal";
 import { useState } from "react";
 import { IPROJECT } from "../../Reducers/ProjectReducer";
+import DeleteIconButton from "../shared/DeleteIconButton";
+import EditIconButton from "../shared/EditIconButton";
 const Project = () => {
 	const [edit, setEdit] = useState<{
 		editMode: boolean;
@@ -35,18 +37,24 @@ const Project = () => {
 				<Grid item xs={12}>
 					<Header>Projects</Header>
 				</Grid>
-				{projects.map((project: IPROJECT) => (
-					<Grid item xs={12} key={project.id}>
-						{project.title}
-
-						<button onClick={() => handleDelete(project)}>
-							delete
-						</button>
-						<button onClick={() => handleEdit(project)}>
-							edit
-						</button>
+				{projects.length !== 0 && (
+					<Grid item xs={12}>
+						<List>
+							{projects.map((project: IPROJECT) => (
+								<div className="items" key={project.id}>
+									<h3>{project.title}</h3>
+									<DeleteIconButton
+										click={() =>
+											handleDelete(project)
+										}></DeleteIconButton>
+									<EditIconButton
+										click={() => handleEdit(project)}
+									/>
+								</div>
+							))}
+						</List>
 					</Grid>
-				))}
+				)}
 				<Grid item xs={4}>
 					<AddButton onClick={handleAdd} />
 				</Grid>

@@ -13,7 +13,7 @@ const initialState: IPROJECT[] = [];
 export type ProjectActions =
 	| { type: "ADD_PROJECT"; payload: IPROJECT }
 	| { type: "DELETE_PROJECT"; payload: IPROJECT }
-	| { type: "EDIT_PROJECT"; payload: IPROJECT; id: string }
+	| { type: "EDIT_PROJECT"; payload: IPROJECT }
 	| { type: "RESET" };
 
 export const ProjectReducer: Reducer<IPROJECT[], ProjectActions> = (

@@ -41,7 +41,7 @@ const Education = () => {
 					<Grid item xs={12}>
 						<List>
 							{education.map((edu: IEDUCATION) => (
-								<div className="items">
+								<div className="items" key={edu.id}>
 									<h3>{edu.degree}</h3>
 									<DeleteIconButton
 										click={() =>
